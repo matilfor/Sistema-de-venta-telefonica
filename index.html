@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de compra telefónica</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+</head>
+<body>
+    <div class="ingreso">
+        <div class="input-nombre">
+            <p>Ingrese su nombre:</p>
+            <input type="text" class="nombre">
+        </div>
+        <div class="boton"><button class="btn-ingreso">Ingresar</button></div>
+        <p id="error" class="hide">Error! Debe ingresar su nombre</p>
+    </div>
+    <div class="opciones"> 
+        <div class='saludo'></div>
+        <p>Seleccione una opcion:</p>
+        <div class="button-container"> 
+            <button class="comprar">Realizar una compra</button>
+            <button class="ayuda">Pedir ayuda</button>
+            <button class="baja">Gestionar una baja</button>
+            <button class="deuda">Informar estado de deuda</button>
+            <button class="salir">Salir</button>
+        </div>
+    </div>
+    <div class="shop">
+        <input type="text" placeholder="Producto" id="input-producto">
+        <input type="number" placeholder="Precio" id="input-precio">
+        <button class="agregar">Agregar producto</button>
+        <div class="tabla-productos"></div>
+        <div class="total"></div>
+    </div>
+    <div class="respuestas"><span id="respuesta"></span></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
