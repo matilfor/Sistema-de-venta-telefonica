@@ -20,19 +20,38 @@
         <div class='saludo'></div>
         <p>Seleccione una opcion:</p>
         <div class="button-container"> 
-            <button class="comprar">Realizar una compra</button>
-            <button class="ayuda">Pedir ayuda</button>
-            <button class="baja">Gestionar una baja</button>
-            <button class="deuda">Informar estado de deuda</button>
-            <button class="salir">Salir</button>
+            <button class="comprar" onclick="boton(1)">Realizar una compra</button>
+            <button class="ayuda" onclick="boton(2)">Pedir ayuda</button>
+            <button class="baja" onclick="boton(3)">Gestionar una baja</button>
+            <button class="deuda" onclick="boton(4)">Informar estado de deuda</button>
+            <button class="salir" onclick="boton(5)">Salir</button>
         </div>
     </div>
-    <div class="shop">
+    <div class="shop"></div>
+    <form id="compra">
         <input type="text" placeholder="Producto" id="input-producto">
         <input type="number" placeholder="Precio" id="input-precio">
-        <button class="agregar">Agregar producto</button>
-        <div class="tabla-productos"></div>
-        <div class="total"></div>
+        <button type="button" onclick="agregarProducto()" class="agregar">Agregar producto</button>
+        <ol id="lista-productos"></ol>
+        <p class="subtotal"></p>
+        <button type="button" class="pagar">Pagar</button>
+    </form>
+    <div class="medpago-cuotas">
+        <p class="mediopago">Seleccione el medio de pago:</p>
+        <select name="medio-pago" id="medio-pago">
+            <option value='efectivo'>Efectivo</option>
+            <option value='credito'>Tarjeta de credito</option>
+            <option value='debito'>Tarjeta de debito</option>
+            <option value='cheque'>Cheque</option>
+        </select>
+        <p class="cuotas">Seleccione la cantidad de cuotas:</p>
+        <select name="cuotas" id="cuotas">
+            <option value='1'>1</option>
+            <option value='12'>12</option>
+            <option value='24'>24</option>
+            <option value='36'>36</option>
+        </select>
+        <button id="total">Total</button>
     </div>
     <div class="respuestas"><span id="respuesta"></span></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
