@@ -1,10 +1,7 @@
-let clientes = {
-    nombre: '',
-};
-
+let cliente = '';
 let productos = [];
-
 let contador = 1;
+let total = 0;
 
 const recargoEfectivo = 1;
 const recargoDebito = 1.05;
@@ -20,14 +17,16 @@ function inicio(){
     $('#error').hide();
     $('.opciones').hide();
     $('#compra').hide();
-    $('.medpago-cuotas').hide();
+    $('.medpago').hide();
+    $('.cuotas').hide();
+    $('.total').hide();
 }
 
 function login(){
     $('.btn-ingreso').on('click', function(){
-        clientes.nombre = $('.nombre').val();
-        if (clientes.nombre) {
-            $('.saludo').prepend('<p class="saludos">¡Hola ' + clientes.nombre +'!</p>')
+        cliente = $('.cliente').val();
+        if (cliente) {
+            $('.saludo').prepend('<p class="saludos">Bienvenido ' + cliente +'</p>')
             $('.opciones').show();
             $('#error').hide();
         } else {
@@ -43,13 +42,17 @@ function boton (botonPresionado) {
         empezarCompra();
         break;
       case 2:
-      case 3:
-      case 4:
-      case 5:
-        console.log('boton ' + botonPresionado);
+        console.log("Todos los operadores se encuentran ocupados");
         break;
-      default:
-        console.log('presionaste cualquier cosa');
+      case 3:
+        console.log("Opción inválida, ya vendiste tu alma al diablo");
+        break;
+      case 4:
+        console.log('Su deuda es ' + total);
+        break;
+      case 5:
+        console.log("Gracias por usar nuestro servicio");
+        break;
     }
 }
 
@@ -65,9 +68,9 @@ function agregarProducto(){
     let nombreProd = $('#input-producto').val();
     let precioProd = $('#input-precio').val();
     if (nombreProd.length === 0 || precioProd.length === 0){
-        console.log("debe completar los dos campos");
+        console.log("Debe completar los dos campos");
         return;
-    }
+    };
     let nuevoId = contador++;
     productos.push({
         id: nuevoId,
@@ -95,10 +98,11 @@ function calcularSubtotal(){
         subtotal += productos[i].precio;
     }
     return subtotal;
-}
+};
 
 $('.pagar').on('click', function(){
-    $('.medpago-cuotas').show();
+    $('.medpago').show();
+    $('.total').show();
 });
 
 $('#medio-pago').on('change', function(){
@@ -111,27 +115,26 @@ $('#medio-pago').on('change', function(){
     }
 });
 
-$('#total').click(function(){
+$('#btn-total').click(function(){
     let subtotal = calcularSubtotal();
     let mediopago = $('#medio-pago').val();
     let cuotas = $('#cuotas').val();
-
-    if (mediopago === 'efectivo'){
-        subtotal = subtotal * recargoEfectivo;
-    }
-    if (mediopago === 'debito'){
-        subtotal = subtotal * recargoDebito;
-    }
-    if (mediopago === 'cheque'){
-        subtotal = subtotal * recargoCheque;
-    }
-    if (mediopago === 'credito'){
-        subtotal = subtotal * recargoCredito;
-        if (cuotas === '1'){
-            subtotal = subtotal * recargo1Cuota;
-        } 
-    }
-}) //COMPLETAR switch con parametro mediopago y otro para calculo de cuotas con parametro cuotas
+    let recargoMp = 1;
+    let recargoCuotas = 1;
+  
+    if (mediopago === 'efectivo') recargoMp = recargoEfectivo;
+    if (mediopago === 'debito') recargoMp = recargoDebito;
+    if (mediopago === 'cheque') recargoMp = recargoCheque;
+    if (mediopago === 'credito') recargoMp = recargoCredito;
+  
+    if (cuotas === '1') recargoCuotas = recargo1Cuota;
+    if (cuotas === '12') recargoCuotas = recargo12Cuotas;
+    if (cuotas === '24') recargoCuotas = recargo24Cuotas;
+    if (cuotas === '36') recargoCuotas = recargo36Cuotas;
+  
+    total = subtotal * recargoMp * recargoCuotas;
+    $("#total-msg").html(`Total: $${total.toFixed(2)}`);
+});
 
 inicio();
 login();
