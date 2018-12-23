@@ -14,8 +14,10 @@ const recargo24Cuotas = 1.45;
 const recargo36Cuotas= 1.70;
 
 function inicio(){
+    $('input[type=text]').val('');
+    $('input[type=number]').val('');
     $('#error').hide();
-    $('.opciones').hide();
+    $('#opciones').hide();
     $('#compra').hide();
     $('.medpago').hide();
     $('.cuotas').hide();
@@ -23,16 +25,17 @@ function inicio(){
 }
 
 function login(){
-    $('.btn-ingreso').on('click', function(){
-        cliente = $('.cliente').val();
+    $('#btn-ingreso').on('click', function(){
+        cliente = $('#cliente').val();
         if (cliente) {
-            $('.saludo').prepend('<p class="saludos">Bienvenido ' + cliente +'</p>')
-            $('.opciones').show();
+            $('.saludo').prepend('<p class="saludos">Bienvenide ' + cliente +'</p>')
+            $('#opciones').show();
             $('#error').hide();
         } else {
             $('#error').show();
             return;
         }
+        $('#ingreso').hide();
     });
 }
 
@@ -57,6 +60,7 @@ function boton (botonPresionado) {
 }
 
 function empezarCompra(){
+    $('#ingreso').hide();
     $('.shop').append('<p class="msg-espera">Sera atendido en unos instantes</p>')
     setTimeout(function(){
         $('.msg-espera').remove();
@@ -79,13 +83,13 @@ function agregarProducto(){
     });
     $('#lista-productos').append(
         `<li data-index="${nuevoId}">${nombreProd} $${precioProd}
-        <button class="borrar-prod">Borrar</button>
+        <button id="borrar-prod"><i class="fa fa-trash"></i></button>
         </li>`);
     let subtotal = calcularSubtotal();
     $('.subtotal').html(`Subtotal: $${subtotal}`);
 };
 
-$(document).on('click', '.borrar-prod', function(){
+$(document).on('click', '#borrar-prod', function(){
     let idBorrar = $(this).parent().data('index');
     $(this).parent().remove();
     let index = productos.findIndex(p => p.id == idBorrar);
@@ -100,7 +104,7 @@ function calcularSubtotal(){
     return subtotal;
 };
 
-$('.pagar').on('click', function(){
+$('#pagar').on('click', function(){
     $('.medpago').show();
     $('.total').show();
 });

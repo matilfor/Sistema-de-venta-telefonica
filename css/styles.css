@@ -1,3 +1,129 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    background-color:#A9F5F2
+}
+
 .hide{
     display: none;
 }
+
+button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  button:hover{
+      background-color: #58D3F7;
+  }
+
+  .ingrese{
+      font-size: 40px;
+  }
+
+  .saludo{
+      background-color: #008CBA;
+      margin: 5px;
+  }
+
+  .saludos{
+      font-style: italic;
+      color: aliceblue;
+      padding: 5px;
+      font-size: 30px;
+  }
+
+  .msg-espera{
+    animation-duration: .8s;
+    animation-name: fadeAndScale;
+    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
+  }
+
+  @keyframes fadeAndScale {
+    from {
+        opacity: 0;
+        transform: scale(.9, .9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+   }
+
+  #borrar-prod{
+    padding: 5px 10px;
+    background-color: white;
+    border: 2px solid #008CBA;
+    color: #008CBA;
+  }
+
+  #medio-pago{
+      width: 200px;
+  }
+
+  .medpago{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #medio-pago select{
+      display: none;
+  }
+
+  p{
+      text-align: center;
+  }
+
+  #ingreso{
+      text-align: center;
+  }
+
+  .seleccione{
+      font-size: 40px;
+  }
+
+  #opciones{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #compra{
+    text-align: center;
+  }
+
+  ol {
+    background: #3399ff;
+    padding: 20px;
+    width: 700px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  ol li {
+    background: #cce5ff;
+    padding: 5px;
+    margin-left: 35px;
+  }
+
+  .cuotas{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .total{
+    text-align: center;
+  }
+
+  #total-msg{
+      font-size: 50px;
+  }
