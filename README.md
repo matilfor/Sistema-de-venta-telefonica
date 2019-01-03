@@ -1,4 +1,6 @@
-# tp-3
+# Sistema de venta telefónica
+
+Aplicación sencilla que simula una venta telefónica. Hecha con CSS3, HTML5, Jquery, Javascript. Escrito en Visual Studio Code.
 
 Para una contestadora telefónica programar las siguientes opciones:
 a)Ingresar el nombre
