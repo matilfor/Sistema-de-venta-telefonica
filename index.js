@@ -13,29 +13,48 @@ const recargo12Cuotas = 1.20;
 const recargo24Cuotas = 1.45;
 const recargo36Cuotas= 1.70;
 
+$inputText = $('input[type=text]');
+$inputNumber = $('input[type=number]');
+$error = $('#error');
+$opciones = $('#opciones');
+$compra = $('#compra');
+$medpago = $('.medpago');
+$cuotas = $('.cuotas');
+$cuotasSelect = $('#cuotas');
+$total = $('.total');
+$ingreso = $('#ingreso');
+$shop = $('.shop');
+$pagar = $('#pagar');
+$mediopago = $('#medio-pago');
+$totalMsg = $("#total-msg");
+$btnTotal = $('#btn-total');
+$msgEspera = $('.msg-espera');
+$btnIngreso = $('#btn-ingreso');
+
 function inicio(){
-    $('input[type=text]').val('');
-    $('input[type=number]').val('');
-    $('#error').hide();
-    $('#opciones').hide();
-    $('#compra').hide();
-    $('.medpago').hide();
-    $('.cuotas').hide();
-    $('.total').hide();
+    $inputText.val('');
+    $inputNumber.val('');
+    $error.hide();
+    $opciones.hide();
+    $compra.hide();
+    $medpago.hide();
+    $cuotas.hide();
+    $total.hide();
 }
 
 function login(){
-    $('#btn-ingreso').on('click', function(){
+    $btnIngreso.on('click', function(){
         cliente = $('#cliente').val();
+        $saludo = $('.saludo');
         if (cliente) {
-            $('.saludo').prepend('<p class="saludos">Bienvenide ' + cliente +'</p>')
-            $('#opciones').show();
-            $('#error').hide();
+            $saludo.prepend('<p class="saludos">Bienvenide ' + cliente +'</p>')
+            $opciones.show();
+            $error.hide();
         } else {
-            $('#error').show();
+            $error.show();
             return;
         }
-        $('#ingreso').hide();
+        $ingreso.hide();
     });
 }
 
@@ -60,17 +79,18 @@ function boton (botonPresionado) {
 }
 
 function empezarCompra(){
-    $('#ingreso').hide();
-    $('.shop').append('<p class="msg-espera">Sera atendido en unos instantes</p>')
+    $ingreso.hide();
+    $shop.append('<p class="msg-espera">Sera atendido en unos instantes</p>')
     setTimeout(function(){
-        $('.msg-espera').remove();
-        $('#compra').show();
+        $msgEspera.remove();
+        $compra.show();
     }, 1000);
 };
 
 function agregarProducto(){
     let nombreProd = $('#input-producto').val();
     let precioProd = $('#input-precio').val();
+    $listaproductos = $('#lista-productos');
     if (nombreProd.length === 0 || precioProd.length === 0){
         console.log("Debe completar los dos campos");
         return;
@@ -81,12 +101,13 @@ function agregarProducto(){
         nombre: nombreProd,
         precio: parseFloat(precioProd)
     });
-    $('#lista-productos').append(
+    $listaproductos.append(
         `<li data-index="${nuevoId}">${nombreProd} $${precioProd}
         <button id="borrar-prod"><i class="fa fa-trash"></i></button>
         </li>`);
     let subtotal = calcularSubtotal();
-    $('.subtotal').html(`Subtotal: $${subtotal}`);
+    $subtotal = $('.subtotal');
+    $subtotal.html(`Subtotal: $${subtotal}`);
 };
 
 $(document).on('click', '#borrar-prod', function(){
@@ -104,22 +125,22 @@ function calcularSubtotal(){
     return subtotal;
 };
 
-$('#pagar').on('click', function(){
-    $('.medpago').show();
-    $('.total').show();
+$pagar.on('click', function(){
+    $medpago.show();
+    $total.show();
 });
 
-$('#medio-pago').on('change', function(){
+$mediopago.on('change', function(){
     if ($(this).val() === 'credito'){
-        $('.cuotas').show();
-        $('#cuotas').show();
+        $cuotas.show();
+        $cuotasSelect.show();
     }else{
-        $('.cuotas').hide();
-        $('#cuotas').hide();
+        $cuotas.hide();
+        $cuotasSelect.hide();
     }
 });
 
-$('#btn-total').click(function(){
+$btnTotal.click(function(){
     let subtotal = calcularSubtotal();
     let mediopago = $('#medio-pago').val();
     let cuotas = $('#cuotas').val();
@@ -137,7 +158,7 @@ $('#btn-total').click(function(){
     if (cuotas === '36') recargoCuotas = recargo36Cuotas;
   
     total = subtotal * recargoMp * recargoCuotas;
-    $("#total-msg").html(`Total: $${total.toFixed(2)}`);
+    $totalMsg.html(`Total: $${total.toFixed(2)}`);
 });
 
 inicio();
