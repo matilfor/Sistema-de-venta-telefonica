@@ -1,7 +1,8 @@
 body{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
-    background-color:#A9F5F2
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 .hide{
@@ -67,6 +68,12 @@ button {
     color: #008CBA;
   }
 
+  #borrar-prod:hover{
+    color: #aaa;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   #medio-pago{
       width: 200px;
   }
@@ -102,7 +109,6 @@ button {
   }
 
   ol {
-    background: #3399ff;
     padding: 20px;
     width: 700px;
     margin: auto;
@@ -110,9 +116,8 @@ button {
   }
 
   ol li {
-    background: #cce5ff;
+    background: rgba(148,187,233,1);
     padding: 5px;
-    margin-left: 35px;
   }
 
   .cuotas{
@@ -127,3 +132,42 @@ button {
   #total-msg{
       font-size: 50px;
   }
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+/* The Close Button */
+#cerrar {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#cerrar:hover,
+#cerrar:focus {
+  color: #aaa;
+  text-decoration: none;
+  cursor: pointer;
+} 

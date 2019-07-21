@@ -47,7 +47,7 @@ function login(){
         cliente = $('#cliente').val();
         $saludo = $('.saludo');
         if (cliente) {
-            $saludo.prepend('<p class="saludos">Bienvenido/a ' + cliente +'</p>')
+            $saludo.prepend('<p class="saludos">Bienvenido/a ' + cliente +'</p>');
             $opciones.show();
             $error.hide();
         } else {
@@ -59,21 +59,35 @@ function login(){
 }
 
 function boton (botonPresionado) {
+    // acceder al modal
+    var modal = document.getElementById("modal");
+    var mensaje = document.getElementById("mensaje");
+    var span = document.getElementById("cerrar");
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
     switch (botonPresionado) {
       case 1:
         empezarCompra();
         break;
       case 2:
-        console.log("Todos los operadores se encuentran ocupados");
+        modal.style.display = "block";
+        mensaje.innerHTML = "Todos nuestros operadores están ocupados";
         break;
       case 3:
-        console.log("Opción inválida, ya vendiste tu alma al diablo");
+        modal.style.display = "block";
+        mensaje.innerHTML = "Opción inválida, ya vendiste tu alma al diablo";
         break;
       case 4:
-        console.log('Su deuda es ' + total);
+        modal.style.display = "block";
+        mensaje.innerHTML = "Su deuda es "  + total;
         break;
       case 5:
-        console.log("Gracias por usar nuestro servicio");
+        modal.style.display = "block";
+        mensaje.innerHTML = "Gracias por usar nuestro servicio";
+        setTimeout(function(){
+            document.location.reload(true);
+        }, 1000);
         break;
     }
 }
