@@ -28,7 +28,7 @@ $pagar = $('#pagar');
 $mediopago = $('#medio-pago');
 $totalMsg = $("#total-msg");
 $btnTotal = $('#btn-total');
-$msgEspera = $('.msg-espera');
+
 $btnIngreso = $('#btn-ingreso');
 
 function inicio(){
@@ -94,11 +94,8 @@ function boton (botonPresionado) {
 
 function empezarCompra(){
     $ingreso.hide();
-    $shop.append('<p class="msg-espera">Será atendido en unos instantes</p>')
-    setTimeout(function(){
-        $msgEspera.remove();
-        $compra.show();
-    }, 1000);
+    alert("Será atendido en unos instantes")
+    setTimeout(function(){$compra.show()}, 1000)
 };
 
 function agregarProducto(){

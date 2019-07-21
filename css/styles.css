@@ -44,12 +44,6 @@ button {
       font-size: 30px;
   }
 
-  .msg-espera{
-    animation-duration: .8s;
-    animation-name: fadeAndScale;
-    animation-timing-function: cubic-bezier(.71,.55,.62,1.57);
-  }
-
   @keyframes fadeAndScale {
     from {
         opacity: 0;
@@ -101,7 +95,7 @@ button {
 
   #opciones{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 
   #compra{
