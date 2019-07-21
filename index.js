@@ -47,7 +47,7 @@ function login(){
         cliente = $('#cliente').val();
         $saludo = $('.saludo');
         if (cliente) {
-            $saludo.prepend('<p class="saludos">Bienvenide ' + cliente +'</p>')
+            $saludo.prepend('<p class="saludos">Bienvenido/a ' + cliente +'</p>')
             $opciones.show();
             $error.hide();
         } else {
@@ -80,7 +80,7 @@ function boton (botonPresionado) {
 
 function empezarCompra(){
     $ingreso.hide();
-    $shop.append('<p class="msg-espera">Sera atendido en unos instantes</p>')
+    $shop.append('<p class="msg-espera">Será atendido en unos instantes</p>')
     setTimeout(function(){
         $msgEspera.remove();
         $compra.show();
